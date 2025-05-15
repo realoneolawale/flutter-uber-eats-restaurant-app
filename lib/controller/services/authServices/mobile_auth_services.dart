@@ -9,7 +9,6 @@ import 'package:provider/provider.dart';
 import '../../../dto/auth_response_dto.dart';
 import '../../../view/auth_screens/mobile_login_screen.dart';
 import '../../../view/auth_screens/otp_screen.dart';
-import '../../../view/bottom-navigation-bar/bottom_navigation_bar.dart';
 import '../../../view/sign_in_logic_screen/sign_in_logic_screen.dart';
 import '../../provider/auth_provider/auth_provider.dart';
 
@@ -18,6 +17,26 @@ const String userUrl = '${baseUrl}api/User';
 
 class MobileAuthServices {
   late final String url;
+
+  static checkRestaurantRegistration({required BuildContext context}) {
+    bool restaurantIsRegistered = false;
+    try {
+      /* await fireStore.collection('Restaurant').where('restaurantUID', is equalTo: auth.currentUser!.uid).get().then((value) => {
+        value.size > 0 ? restaurantIsRegistered = true : restaurantIsRegistered = false;
+      });
+      if(restaurantIsRegistered){
+        Navigator.pushAndRemoveUntil(context, PageTransition(child: const BottomNavigationBarUberEats(), type: PageTransitionType.rightToLeft), (route) => false);
+      }else{
+        Navigator.pushAndRemoveUntil(context, PageTransition(child: const RestaurantRegistrationScreen(), type: PageTransitionType.rightToLeft), (route) => false);
+      }
+
+       */
+    } catch (e) {
+      log(e.toString());
+      throw Exception(e);
+    }
+  }
+
   // check if the user is authenticated - return the home screen or auth screen
   bool checkAuthentication(BuildContext context) {
     String? verificationId = context.read<MobileAuthProvider>().verificationID;
@@ -28,11 +47,8 @@ class MobileAuthServices {
           (route) => false);
       return false;
     }
-    Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(
-            builder: (context) => const BottomNavigationBarUberEats()),
-        (route) => false);
+    // redirect to RestaurantRegistrationScreen or Home
+    checkAuthentication(context);
     return true;
   }
 

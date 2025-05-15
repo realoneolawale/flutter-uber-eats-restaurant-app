@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
+import 'package:uber_eats_restaurant/controller/provider/restaurant_register_provider/restaurant_register_provider.dart';
 import 'package:uber_eats_restaurant/view/sign_in_logic_screen/sign_in_logic_screen.dart';
-
-import 'controller/provider/auth_provider/auth_provider.dart';
 
 void main() {
   runApp(const UberEats());
@@ -18,8 +17,8 @@ class UberEats extends StatelessWidget {
     return Sizer(builder: (context, _, __) {
       return MultiProvider(
         providers: [
-          ChangeNotifierProvider<MobileAuthProvider>(
-            create: (_) => MobileAuthProvider(),
+          ChangeNotifierProvider<RestaurantRegisterProvider>(
+            create: (_) => RestaurantRegisterProvider(),
           )
         ],
         child: MaterialApp(

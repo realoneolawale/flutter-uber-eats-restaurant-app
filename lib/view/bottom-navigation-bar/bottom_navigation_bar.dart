@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
-import 'package:uber_eats_restaurant/view/add_food_item/add_food_item.dart';
+import 'package:uber_eats_restaurant/view/menu_screen/menu_screen.dart';
+import 'package:uber_eats_restaurant/view/restaurant_registration_screen/restaurant_registration_screen.dart';
 import 'package:uber_eats_restaurant/view/status_screen/status_screen.dart';
 
 import '../../constant/colors.dart';
 import '../account/account.dart';
-import '../home/home.dart';
 
 class BottomNavigationBarUberEats extends StatefulWidget {
   const BottomNavigationBarUberEats({super.key});
@@ -26,7 +26,7 @@ class _BottomNavigationBarUberEatsState
     return PersistentTabView(
       tabs: [
         PersistentTabConfig(
-          screen: const HomeScreen(),
+          screen: const RestaurantRegistrationScreen(),
           item: ItemConfig(
             icon: FaIcon(FontAwesomeIcons.house),
             title: "Home",
@@ -35,7 +35,7 @@ class _BottomNavigationBarUberEatsState
           ),
         ),
         PersistentTabConfig(
-          screen: const AddFoodItemScreen(),
+          screen: const MenuScreen(),
           item: ItemConfig(
             icon: FaIcon(FontAwesomeIcons.list),
             title: "Menu",
